@@ -8,4 +8,4 @@ const schema = new Schema({
 });
 
 
-module.exports = mongoose.model('Tag', schema);
+module.exports = mongoose.model('Stack', schema);
