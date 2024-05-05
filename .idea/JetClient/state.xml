@@ -1,6 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JetClientState">
+    <option name="draftsState">
+      <draftsState>
+        <option name="auth">
+          <authState>
+            <option name="bearer">
+              <jU>
+                <option name="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2Mzc3ZmJlYWM0YjZlNDlhNGYwNWE4NyIsIm5hbWUiOiJuYW1lX1lCODMiLCJlbWFpbCI6ImVtYWlsX0pYNzEiLCJwYXNzd29yZCI6IiQyYSQxMCRubERCc2dPM2svTFF4Q0QubUNkSEpPRUhnOUEwLzA1SlI3dHo1UjU4MVViL0lNYmpVc2piZSIsInBvc3RzIjpbXSwiY29tbWVudHMiOltdLCJjcmVhdGVkX2F0IjoiMjAyNC0wNS0wNVQxMjo0Njo1NC43NTNaIiwidXBkYXRlZF9hdCI6IjIwMjQtMDUtMDVUMTI6NDY6NTQuNzUzWiIsIl9fdiI6MH0sImlhdCI6MTcxNDkxODY3OCwibmJmIjoxNzE0OTE4Njc4LCJleHAiOjE3MTU1MjM0Nzh9.wJV_rcdMIZ10ZmAIeVT57aN5aPzyHNAT4gWvj7oBYeI" />
+              </jU>
+            </option>
+            <option name="type" value="BEARER" />
+          </authState>
+        </option>
+        <option name="requests">
+          <list>
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;email&quot; : &quot;email_JX71&quot;,&#10;  &quot;name&quot; : &quot;name_YB83&quot;,&#10;  &quot;password&quot; : &quot;password_DT21&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="6489bdda-bb20-4ab4-a040-c93866b36c8c" />
+              <option name="method" value="POST" />
+              <option name="name" value="register" />
+              <option name="url" value="http://localhost:3000/auth/register" />
+            </requestState>
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;email&quot; : &quot;email_JX71&quot;,&#10;  &quot;password&quot; : &quot;password_DT21&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="741ccb94-f1e3-4891-9e38-bac54cac44ba" />
+              <option name="method" value="POST" />
+              <option name="name" value="login" />
+              <option name="url" value="http://localhost:3000/auth/login" />
+            </requestState>
+            <requestState>
+              <option name="auth">
+                <authState>
+                  <option name="bearer">
+                    <jU>
+                      <option name="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2Mzc3ZmJlYWM0YjZlNDlhNGYwNWE4NyIsIm5hbWUiOiJuYW1lX1lCODMiLCJlbWFpbCI6ImVtYWlsX0pYNzEiLCJwYXNzd29yZCI6IiQyYSQxMCRubERCc2dPM2svTFF4Q0QubUNkSEpPRUhnOUEwLzA1SlI3dHo1UjU4MVViL0lNYmpVc2piZSIsInBvc3RzIjpbXSwiY29tbWVudHMiOltdLCJjcmVhdGVkX2F0IjoiMjAyNC0wNS0wNVQxMjo0Njo1NC43NTNaIiwidXBkYXRlZF9hdCI6IjIwMjQtMDUtMDVUMTI6NDY6NTQuNzUzWiIsIl9fdiI6MH0sImlhdCI6MTcxNDkxNzMxNCwibmJmIjoxNzE0OTE3MzE0LCJleHAiOjE3MTQ5MjA5MTR9.lavLhUbADX0Hd9SCf1n-kQlW8CvglNc-jPtGh52OF_s" />
+                    </jU>
+                  </option>
+                  <option name="type" value="BEARER" />
+                </authState>
+              </option>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;email&quot; : &quot;email_JX71&quot;,&#10;  &quot;password&quot; : &quot;password_DT21&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="disabled" value="true" />
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="2e8a0888-86c8-460a-9375-dbfbf7c83ce3" />
+              <option name="method" value="GET" />
+              <option name="name" value="logout" />
+              <option name="url" value="http://localhost:3000/auth/logout" />
+            </requestState>
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;title&quot; : &quot;Como upar video&quot;,&#10;  &quot;content&quot; : &quot;Quero upar um video no youtube, mas eu nao sei como fazer, alguem me ajude?&quot;,&#10;  &quot;stack&quot; : &quot;6637948adecf448b191faf78&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="c50ff43f-679a-4269-b421-229c0777a635" />
+              <option name="method" value="POST" />
+              <option name="name" value="createPost" />
+              <option name="url" value="http://localhost:3000/post" />
+            </requestState>
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;name&quot; : &quot;Programaçao Avançada Web&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="47ca1a60-91c0-4f5b-9fe0-9bde9bf2b48d" />
+              <option name="method" value="POST" />
+              <option name="name" value="createStack" />
+              <option name="url" value="http://localhost:3000/stack" />
+            </requestState>
+          </list>
+        </option>
+      </draftsState>
+    </option>
     <option name="id" value="da9e14d1-61da-4dc1-bcf5-34703b964792" />
   </component>
 </project>

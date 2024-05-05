@@ -11,4 +11,4 @@ const schema = new Schema({
     updated_at: {type: Date, default: Date.now}
 });
 
-module.exports = mongoose.model('User', schema);
+module.exports = mongoose.models.User || mongoose.model('User', schema);
