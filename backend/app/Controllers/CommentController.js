@@ -10,7 +10,7 @@ class CommentController {
 
         const newCom = new Comment({
             content: com,
-            user: 'Davi', //TODO: Receber via sessão
+            user: req.auth._id, //TODO: Receber via sessão
             post: id_post,      
         })
         try{
@@ -35,12 +35,13 @@ class CommentController {
         
         const id_post =  req.body.id_post;
         const content = req.body.content;
-        const userId = Auth.id;
-        const postId = req.paramns.id;
-        
-        const post = await Comment.findById(postId)
 
-        if(userId !== post.user){
+        const userId = req.auth._id;
+        const commentId = req.paramns.id;
+        
+        const comment = await Comment.findById(commentId);
+
+        if(userId !== comment.user){
             return res.status(401).send('Você não tem permissão!')
         }
         // const edited_com = new Comment({
@@ -48,6 +49,7 @@ class CommentController {
         //     user: user, //TODO: Receber via sessão
         //     post: id_post,   
         //     edited_at: Date.now
+        
         try{
             const saveEditComment = await Comment.findOneAndUpdate(
                 {_id: id_post},

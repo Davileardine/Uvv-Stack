@@ -31,7 +31,7 @@ const auth = async (req, res, next) => {
 
         // Log the error and send a generic 401 error message
         console.log(error);
-        res.status(500).send({error: 'Please authenticate.'});
+        res.status(500).send({error: 'Por favor, autentique.'});
     }
 };
 
