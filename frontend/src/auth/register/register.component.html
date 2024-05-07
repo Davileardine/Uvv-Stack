@@ -1,0 +1,52 @@
+<div class="page page-center bg-yellow-lt">
+  <div class="container container-tight py-4">
+    <div class="text-center mb-4">
+      <a href="." class="navbar-brand"><img src="/assets/img/logo.png" height="124" alt=""></a>
+    </div>
+    <form class="card card-md" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="card-body">
+        <h2 class="card-title text-center mb-4">Criar nova conta</h2>
+        <div class="mb-3">
+          <label class="form-label">Nome</label>
+          <input formControlName="name" type="text" class="form-control" placeholder="Digite seu nome"
+                 [ngClass]="{'is-invalid': registerForm.get('name')?.errors?.['required'] && registerForm.get('name')?.touched}">
+          @if (registerForm.get('name')?.errors?.['required'] && registerForm.get('name')?.touched) {
+            <div class="invalid-feedback"> Nome é obrigatório</div>
+          }
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input formControlName="email" type="email" class="form-control" placeholder="Digite o e-mail"
+                 [ngClass]="{'is-invalid': registerForm.get('email')?.errors && registerForm.get('email')?.touched}">
+          @if (registerForm.get('email')?.errors?.['required'] && registerForm.get('email')?.touched) {
+            <div class="invalid-feedback"> Email é obrigatório</div>
+          } @else if (registerForm.get('email')?.errors?.['pattern'] && registerForm.get('email')?.touched) {
+            <div class="invalid-feedback"> Email inválido</div>
+          }
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input formControlName="password" type="password" class="form-control" placeholder="Password"
+                 autocomplete="off"
+                 [ngClass]="{'is-invalid': registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched}">
+          @if (registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched) {
+            <div class="invalid-feedback"> Senha é obrigatória</div>
+          }
+        </div>
+        <div class="mb-3">
+          <label class="form-check">
+            <input type="checkbox" class="form-check-input" required/>
+            <span class="form-check-label">Concordo com os <a href="./terms-of-service.html"
+                                                        tabindex="-1">termos e política</a>.</span>
+          </label>
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary w-100" [disabled]="!registerForm.valid">Create new account</button>
+        </div>
+      </div>
+    </form>
+    <div class="text-center text-muted mt-3">
+      Já tem conta? <a href="./sign-in.html" tabindex="-1">Entrar</a>
+    </div>
+  </div>
+</div>
