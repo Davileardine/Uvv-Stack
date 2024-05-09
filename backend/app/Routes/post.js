@@ -13,4 +13,6 @@ router.put('/:id', authMiddleware, PostController.updatePost);
 
 router.delete('/:id', authMiddleware, PostController.deletePost);
 
+router.put('/:id/vote', authMiddleware, PostController.vote);
+
 module.exports = router;

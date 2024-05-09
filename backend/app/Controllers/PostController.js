@@ -138,6 +138,26 @@ class PostController {
         }
     }
 
+    async vote(req, res) {
+        const postId = req.params.id;
+        let vote = 0;
+        if (req.body.vote === 'up') {
+            vote = 1;
+        } else {
+            vote = -1;
+        }
+
+        try {
+            const post = await Post.findById(postId);
+            post.votes += vote;
+            await post.save();
+            res.status(200).send({message: 'Voto computado com sucesso'});
+        } catch (error) {
+            console.log(error);
+            res.status(500).send('Erro interno');
+        }
+    }
+
 }
 
 module.exports = new PostController();
