@@ -9,7 +9,7 @@ class CommentController {
 
         const newCom = new Comment({
             content: com,
-            user: req.auth._id, //TODO: Receber via sessão
+            author: req.auth._id,
             post: id_post,
         })
         try {
@@ -38,14 +38,9 @@ class CommentController {
 
         const comment = await Comment.findById(commentId);
 
-        if (userId !== comment.user) {
+        if (userId !== comment.author) {
             return res.status(401).send('Você não tem permissão!')
         }
-        // const edited_com = new Comment({
-        //     content: com,
-        //     user: user, //TODO: Receber via sessão
-        //     post: id_post,   
-        //     edited_at: Date.now
 
         try {
             const saveEditComment = await Comment.findOneAndUpdate(
@@ -89,6 +84,8 @@ class CommentController {
             res.status(500).json({message: 'Erro ao computar voto!'});
         }
     }
+
+    //TODO: Implementar a função de deletar um comentário (leite game)
 }
 
 module.exports = new CommentController();

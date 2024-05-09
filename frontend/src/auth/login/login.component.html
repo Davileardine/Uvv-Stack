@@ -1,0 +1,37 @@
+<div class="page page-center bg-yellow-lt">
+  <div class="container container-tight py-4">
+    <div class="text-center mb-4">
+      <a href="." class="navbar-brand"><img src="/assets/img/logo.png" height="124" alt=""></a>
+    </div>
+    <div class="card card-md">
+      <div class="card-body">
+        <h2 class="h2 text-center mb-4">Faça login na sua conta</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label class="form-label">E-mail</label>
+            <input formControlName="email" type="email" class="form-control" placeholder="Seu email" autocomplete="off"
+                   [ngClass]="{'is-invalid': loginForm.get('email')?.errors && loginForm.get('email')?.touched}">
+            @if (loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched) {
+              <div class="invalid-feedback">Email é obrigatório</div>
+            }
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Password</label>
+            <input formControlName="password" type="password" class="form-control" placeholder="Sua senha"
+                   autocomplete="off"
+                   [ngClass]="{'is-invalid': loginForm.get('password')?.errors && loginForm.get('password')?.touched}">
+            @if (loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched) {
+              <div class="invalid-feedback">Senha é obrigatória</div>
+            }
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.valid">Entrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="text-center text-secondary mt-3">
+      Ainda não tem conta? <a [routerLink]="['../register']" tabindex="-1">Registrar</a>
+    </div>
+  </div>
+</div>
