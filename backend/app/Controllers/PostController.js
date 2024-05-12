@@ -1,7 +1,9 @@
 const Post = require('../Models/Post');
 const Comment = require('../Models/Comment');
+const Stack = require('../Models/Stack');
 
 class PostController {
+    // GET /post/:id
     async getPost(req, res) {
         const post_id = req.params.id;
 
@@ -9,15 +11,26 @@ class PostController {
             const post = await Post.findById(post_id)
                 .populate('author')
                 .populate('stack')
-                .populate('tags')
-                .populate('comments');
-            res.status(200).send(post);
+                //.populate('tags')
+                .populate({
+                    path: 'comments',
+                    select: '_id content author created_at',
+                    populate: {
+                        path: 'author',
+                        select: '_id name email'
+                    }
+                });
+            res.status(200).send({
+                message: 'Post encontrado com sucesso',
+                data: post
+            });
         } catch (error) {
             console.log(error);
             res.status(500).send('Erro interno');
         }
     }
 
+    // GET /post
     async getPosts(req, res) {
         const page = req.query.page ?? 1;
         const per_page = req.query.per_page ?? 10;
@@ -41,43 +54,64 @@ class PostController {
 
         try {
             const posts = await Post.find(query)
-                .populate('author')
-                .populate('stack')
-                .populate('tags')
-                .populate('comments')
+                .populate('author', '_id name email')
+                .populate('stack', '_id name')
+                //.populate('tags')
+                .populate({
+                    path: 'comments',
+                    select: '_id content author created_at',
+                    populate: {
+                        path: 'author',
+                        select: '_id name email'
+                    }
+                })
                 .skip((page - 1) * per_page)
                 .limit(per_page);
-            res.status(200).send(posts);
+            res.status(200).send({
+                message: 'Posts encontrados com sucesso',
+                data: posts
+            });
         } catch (error) {
             console.log(error);
             res.status(500).send('Erro interno');
         }
     }
 
+    // POST /post
     async createPost(req, res) {
-        const user_id = req.auth._id;
+        const author = req.auth._id;
         const title = req.body.title;
         const content = req.body.content;
-        const stack = req.body.stack;
+        const stack_id = req.body.stack;
         const tags = req.body.tags ?? [];
 
         const post = new Post({
             title: title,
             content: content,
-            stack: stack,
-            author: user_id,
+            stack: stack_id,
+            author: author,
             tags: tags
         });
 
+
         try {
+            const stack = await Stack.findById(stack_id);
+            if (!stack) {
+                return res.status(404).send({message: 'Stack não encontrada'});
+            }
+
             await post.save();
-            res.status(201).send(post);
+            res.status(201).send({
+                message: 'Post criado com sucesso',
+                data: post
+            });
         } catch (error) {
             console.log(error);
             res.status(500).send('Erro interno');
         }
     }
 
+    // PUT /post/:id
     async updatePost(req, res) {
         const user_id = req.auth._id;
         const post_id = req.params.id;
@@ -111,6 +145,8 @@ class PostController {
         }
     }
 
+
+    // DELETE /post/:id
     async deletePost(req, res) {
         const user_id = req.auth._id;
         const post_id = req.params.id;
@@ -138,12 +174,14 @@ class PostController {
         }
     }
 
+
+    // PUT /post/:id/vote
     async vote(req, res) {
         const postId = req.params.id;
         let vote = 0;
         if (req.body.vote === 'up') {
             vote = 1;
-        } else {
+        } else if (req.body.vote === 'down') {
             vote = -1;
         }
 

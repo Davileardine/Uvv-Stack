@@ -3,9 +3,9 @@ const router = express.Router();
 const PostController = require('../Controllers/PostController');
 const authMiddleware = require('../Middlewares/auth');
 
-router.get('/:id', authMiddleware, PostController.getPost);
+router.get('/:id', PostController.getPost);
 
-router.get('/', authMiddleware, PostController.getPosts);
+router.get('/', PostController.getPosts);
 
 router.post('/', authMiddleware, PostController.createPost);
 

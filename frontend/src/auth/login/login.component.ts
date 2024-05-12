@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
-import {NgClass} from "@angular/common";
+import {NgClass, Location } from "@angular/common";
+import {AuthServices} from "../auth.services";
 
 @Component({
   selector: 'app-login',
@@ -12,10 +13,10 @@ import {NgClass} from "@angular/common";
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
-  //private authService = inject(AuthServices);
   protected readonly onsubmit = onsubmit;
+  private authService = inject(AuthServices);
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private location: Location) {
   }
 
   ngOnInit(): void {
@@ -33,7 +34,18 @@ export class LoginComponent implements OnInit {
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
 
-    this.loginForm.reset()
+    this.authService.login(email, password).subscribe({
+      next: (response: any) => {
+        if (response) {
+          this.location.back();
+        } else {
+          console.log('error ao logar');
+        }
+      },
+      error: (error: any) => {
+        console.log('error', error);
+      }
+    });
   }
 
 }

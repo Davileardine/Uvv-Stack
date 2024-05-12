@@ -6,9 +6,9 @@
         <option name="auth">
           <authState>
             <option name="bearer">
-              <jU>
-                <option name="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2Mzc3ZmJlYWM0YjZlNDlhNGYwNWE4NyIsIm5hbWUiOiJuYW1lX1lCODMiLCJlbWFpbCI6ImVtYWlsX0pYNzEiLCJwYXNzd29yZCI6IiQyYSQxMCRubERCc2dPM2svTFF4Q0QubUNkSEpPRUhnOUEwLzA1SlI3dHo1UjU4MVViL0lNYmpVc2piZSIsInBvc3RzIjpbXSwiY29tbWVudHMiOltdLCJjcmVhdGVkX2F0IjoiMjAyNC0wNS0wNVQxMjo0Njo1NC43NTNaIiwidXBkYXRlZF9hdCI6IjIwMjQtMDUtMDVUMTI6NDY6NTQuNzUzWiIsIl9fdiI6MH0sImlhdCI6MTcxNDkxODY3OCwibmJmIjoxNzE0OTE4Njc4LCJleHAiOjE3MTU1MjM0Nzh9.wJV_rcdMIZ10ZmAIeVT57aN5aPzyHNAT4gWvj7oBYeI" />
-              </jU>
+              <jT>
+                <option name="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2Mzc3ZmJlYWM0YjZlNDlhNGYwNWE4NyIsIm5hbWUiOiJuYW1lX1lCODMiLCJlbWFpbCI6ImVtYWlsX0pYNzEiLCJwYXNzd29yZCI6IiQyYSQxMCRubERCc2dPM2svTFF4Q0QubUNkSEpPRUhnOUEwLzA1SlI3dHo1UjU4MVViL0lNYmpVc2piZSIsInBvc3RzIjpbXSwiY29tbWVudHMiOltdLCJjcmVhdGVkX2F0IjoiMjAyNC0wNS0wNVQxMjo0Njo1NC43NTNaIiwidXBkYXRlZF9hdCI6IjIwMjQtMDUtMDVUMTI6NDY6NTQuNzUzWiIsIl9fdiI6MH0sImlhdCI6MTcxNTUyNDU3MSwibmJmIjoxNzE1NTI0NTcxLCJleHAiOjE3MTYxMjkzNzF9.5h-DwcrOTj0il72x3eHfh7dwT5AkF6gVPdCpzMWAomQ" />
+              </jT>
             </option>
             <option name="type" value="BEARER" />
           </authState>
@@ -36,32 +36,12 @@
               <option name="url" value="http://localhost:3000/auth/register" />
             </requestState>
             <requestState>
-              <option name="body">
-                <bodyState>
-                  <option name="raw" value="{&#10;  &quot;email&quot; : &quot;email_JX71&quot;,&#10;  &quot;password&quot; : &quot;password_DT21&quot;&#10;}" />
-                  <option name="type" value="JSON" />
-                </bodyState>
-              </option>
-              <option name="headers">
-                <list>
-                  <headerState>
-                    <option name="key" value="Content-Type" />
-                    <option name="value" value="application/json" />
-                  </headerState>
-                </list>
-              </option>
-              <option name="id" value="741ccb94-f1e3-4891-9e38-bac54cac44ba" />
-              <option name="method" value="POST" />
-              <option name="name" value="login" />
-              <option name="url" value="http://localhost:3000/auth/login" />
-            </requestState>
-            <requestState>
               <option name="auth">
                 <authState>
                   <option name="bearer">
-                    <jU>
+                    <jT>
                       <option name="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2Mzc3ZmJlYWM0YjZlNDlhNGYwNWE4NyIsIm5hbWUiOiJuYW1lX1lCODMiLCJlbWFpbCI6ImVtYWlsX0pYNzEiLCJwYXNzd29yZCI6IiQyYSQxMCRubERCc2dPM2svTFF4Q0QubUNkSEpPRUhnOUEwLzA1SlI3dHo1UjU4MVViL0lNYmpVc2piZSIsInBvc3RzIjpbXSwiY29tbWVudHMiOltdLCJjcmVhdGVkX2F0IjoiMjAyNC0wNS0wNVQxMjo0Njo1NC43NTNaIiwidXBkYXRlZF9hdCI6IjIwMjQtMDUtMDVUMTI6NDY6NTQuNzUzWiIsIl9fdiI6MH0sImlhdCI6MTcxNDkxNzMxNCwibmJmIjoxNzE0OTE3MzE0LCJleHAiOjE3MTQ5MjA5MTR9.lavLhUbADX0Hd9SCf1n-kQlW8CvglNc-jPtGh52OF_s" />
-                    </jU>
+                    </jT>
                   </option>
                   <option name="type" value="BEARER" />
                 </authState>
@@ -85,6 +65,26 @@
               <option name="method" value="GET" />
               <option name="name" value="logout" />
               <option name="url" value="http://localhost:3000/auth/logout" />
+            </requestState>
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;email&quot; : &quot;email_JX71&quot;,&#10;  &quot;password&quot; : &quot;password_DT21&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="741ccb94-f1e3-4891-9e38-bac54cac44ba" />
+              <option name="method" value="POST" />
+              <option name="name" value="login" />
+              <option name="url" value="http://localhost:3000/auth/login" />
             </requestState>
             <requestState>
               <option name="body">
@@ -125,6 +125,26 @@
               <option name="method" value="POST" />
               <option name="name" value="createStack" />
               <option name="url" value="http://localhost:3000/stack" />
+            </requestState>
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;content&quot; : &quot;Que porcaria, muito ruim&quot;,&#10;  &quot;id_post&quot; : &quot;6640e03163f57a08dcadbc66&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="430d6191-2a00-48a7-a776-275cd8ebb698" />
+              <option name="method" value="POST" />
+              <option name="name" value="createComment" />
+              <option name="url" value="http://localhost:3000/comment" />
             </requestState>
           </list>
         </option>

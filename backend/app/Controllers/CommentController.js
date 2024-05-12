@@ -1,7 +1,9 @@
 const Comment = require('../Models/Comment');
+const Post = require('../Models/Post');
 
 
 class CommentController {
+    // POST /comment
     async postComment(req, res) {
         const id_post = req.body.id_post;
         const com = req.body.content
@@ -13,7 +15,18 @@ class CommentController {
             post: id_post,
         })
         try {
+            const post = await Post.findById(id_post);
+            if (!post) {
+                return res.status(404).json({
+                    message: 'Post não encontrado!'
+                });
+            }
+
             const saved_com = await newCom.save();
+
+            post.comments.push(saved_com._id);
+            await post.save();
+
             res.status(201).json({
                 message: 'Mensagem Salvada no Backend!',
                 data: saved_com
@@ -28,6 +41,7 @@ class CommentController {
     }
 
 
+    // PUT /comment/:id
     async editComment(req, res) {
 
         const id_post = req.body.id_post;
@@ -64,6 +78,7 @@ class CommentController {
         }
     }
 
+    // PUT /comment/:id/vote
     async vote(req, res) {
         const commentId = req.params.id;
         let vote = 0;
