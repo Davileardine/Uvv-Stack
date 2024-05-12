@@ -1,0 +1,78 @@
+<div class="container-narrow">
+  <div class="card">
+    <div class="card-header row">
+      <div class="h2 col"><span class="text-muted">stack/</span>{{ stack.name }}</div>
+      <div class="col-auto">
+        <a (click)="openModal()" class="btn btn-yellow">
+          Novo Post
+        </a>
+        <a class="d-none" id="openModal" data-bs-toggle="modal" data-bs-target="#new-post-modal"></a>
+      </div>
+    </div>
+    <div class="card-body bg-yellow-lt">
+      <div class="">
+        @for (post of stack.posts; track $index) {
+          <div class="card mb-2">
+            <div class="card-body cursor-pointer hover hover-shadow-lg" (click)="openPost(post._id)">
+              <div class="row">
+                <div class="col-auto">
+                  <span class="avatar rounded-5"
+                        style="background-image: url('https://ui-avatars.com/api/?name={{ post.author.name[0] }}&color=7F9CF5&background=EBF4FF')"></span>
+                </div>
+                <div class="col">
+                  <div class="page-title mb-2">{{ post.title }}</div>
+                  <div class="page-subtitle">
+                    <div class="d-flex gap-4">
+                      <div>
+                        criado em: <b>{{ post.created_at | date: 'dd/MM/yyyy' }}</b>
+                      </div>
+                      @if (post.updated_at) {
+                        <div>
+                          modificado em: <b>{{ post.updated_at | date: 'dd/MM/yyyy' }}</b>
+                        </div>
+                      }
+                      <div>
+                        por: <a href="/posts?author={{post.author._id}}"><b>{{ post.author.name }}</b></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ms-5 my-2 d-flex gap-2">
+              <div>
+                  <span class="cursor-pointer" (click)="vote(post._id,'up')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-up">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M12 5l0 14"/>
+                      <path d="M18 11l-6 -6"/>
+                      <path d="M6 11l6 -6"/>
+                    </svg>
+                  </span>
+                <div class="badge bg-blue-lt">
+                  {{ post.votes }} Uvotes
+                </div>
+                <span class="cursor-pointer" (click)="vote(post._id,'down')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-down">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M12 5l0 14"/>
+                      <path d="M18 13l-6 6"/>
+                      <path d="M6 13l6 6"/>
+                    </svg>
+                  </span>
+              </div>
+              <div>
+                <span class="badge bg-blue-lt">{{ post.comments.length }} comentários</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+<app-new-post (postCreated)="onPostCreated($event)"/>

@@ -1,0 +1,62 @@
+<div class="container-narrow  my-2">
+  <div class="mb-2 card rounded-5 bg-yellow-lt">
+    <div class="card-body">
+      <div class="">
+        <div class="page-title">
+          {{ post.title }}
+        </div>
+        <div class="page-subtitle">
+          <div class="d-flex gap-4">
+            <div>
+              criado em: <b>{{ post.created_at | date: 'dd/MM/yyyy' }}</b>
+            </div>
+            @if (post.updated_at) {
+              <div>
+                modificado em: <b>{{ post.updated_at | date: 'dd/MM/yyyy' }}</b>
+              </div>
+            }
+            <div>
+              por: <a href="/posts?author={{post.author._id}}"><b>{{ post.author.name }}</b></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border border-5 border-primary my-2"></div>
+      <div class="page-content">
+        <div class="markdown fw-semibold">
+          <div [innerHTML]="post.content"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  Comentarios-->
+  <div class="">
+    <div class="">
+      @for (comment of post.comments; track $index) {
+        <div class="rounded-3 card card-body mb-2">
+          <div class="d-flex gap-2">
+            <div>
+              @if(comment.author._id == post.author._id){
+                <b>Autor</b>
+              } @else {
+                <a href="/posts?author={{comment.author._id}}">
+                  @if(comment.author._id === user._id){
+                    <b>Eu</b>
+                  } @else {
+                    <b>{{ comment.author.name }}</b>
+                  }
+                </a>
+              }
+            </div>
+            <div>
+              {{ comment.created_at | date: 'dd/MM/yyyy' }}
+            </div>
+          </div>
+          <div class="markdown">
+            <div [innerHTML]="comment.content"></div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

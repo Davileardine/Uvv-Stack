@@ -8,8 +8,11 @@ const app = express();
 require('dotenv').config();
 
 const authRoutes = require('./app/Routes/auth');
-const postRoutes = require('./app/Routes/post');
 const stackRoutes = require('./app/Routes/stack');
+const postRoutes = require('./app/Routes/post');
+const commentRoutes = require('./app/Routes/comment');
+
+
 
 const dbconnection = process.env.DB_CONNECTION;
 const dbhost = process.env.DB_HOST;
@@ -37,8 +40,9 @@ app.use((req, res, next) => {
 
 
 app.use('/auth', authRoutes);
-app.use('/post', postRoutes);
 app.use('/stack', stackRoutes);
+app.use('/post', postRoutes);
+app.use('/comment', commentRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

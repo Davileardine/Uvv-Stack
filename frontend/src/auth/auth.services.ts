@@ -56,7 +56,7 @@ export class AuthServices {
   user(): any {
     const token = this.getToken();
     if (!token) {
-      throw new Error('No token found');
+      return null;
     }
 
     const payload = token.split('.')[1];
