@@ -3,12 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {DatePipe} from "@angular/common";
 import {AuthServices} from "../auth/auth.services";
+import {NewCommentComponent} from "../comment/new-comment.component";
 
 @Component({
   selector: 'app-post',
   standalone: true,
   imports: [
-    DatePipe
+    DatePipe,
+    NewCommentComponent
   ],
   templateUrl: './post.component.html'
 })
@@ -17,7 +19,7 @@ export class PostComponent implements OnInit {
   public user: any;
   private id: any;
   private http = inject(HttpClient);
-  private authServices = inject(AuthServices);
+  protected authServices = inject(AuthServices);
   private backendUrl = 'http://localhost:3000/post';
   private headers = {
     'Content-Type': 'application/json',
@@ -51,6 +53,10 @@ export class PostComponent implements OnInit {
         console.log('error', error);
       }
     });
+  }
+
+  onCommentCreated(event: boolean) {
+    this.getPost(this.id);
   }
 
   ngOnInit() {

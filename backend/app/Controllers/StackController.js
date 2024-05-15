@@ -2,6 +2,30 @@ const Stack = require('../Models/Stack');
 const Post = require('../Models/Post');
 
 class StackController {
+
+    //GET /stack
+    async getStacks(req, res) {
+        try {
+            const stacks = await Stack.find();
+            let arrayStacks = [];
+            for (const stack of stacks) {
+                const posts = await Post.find({stack: stack._id}).countDocuments()
+                arrayStacks.push({
+                    stack,
+                    posts
+                });
+            }
+
+            res.status(200).send({
+                message: 'Stacks encontradas',
+                stacks: arrayStacks
+            });
+        } catch (error) {
+            console.log(error);
+            res.status(500).send('Erro Interno');
+        }
+    }
+
     //GET /stack/:id
     async getStack(req, res) {
         const id = req.params.id;

@@ -1,0 +1,13 @@
+<form [formGroup]="formComment" (ngSubmit)="onSubmit()">
+  <div class="mb-3 card rounded-5">
+    <div class="card-body">
+      <h3 class="text-yellow">Adicione seu comentário</h3>
+      <textarea formControlName="comment"
+                class="form-control bg-yellow-lt mb-2" name="comment" rows="3"></textarea>
+    </div>
+
+    <div class="ms-auto my-2 mx-4">
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!formComment.valid">Enviar</button>
+    </div>
+  </div>
+</form>

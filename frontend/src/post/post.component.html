@@ -31,16 +31,25 @@
   </div>
   <!--  Comentarios-->
   <div class="">
+    @if (authServices.isLoggedIn()) {
+      <app-form-comment (commentCreated)="onCommentCreated($event)"/>
+    } @else {
+      <div class="card card-body rounded-5">
+        <div class="text-center">
+          <a href="/auth/login">Faça login</a> para comentar
+        </div>
+      </div>
+    }
     <div class="">
       @for (comment of post.comments; track $index) {
         <div class="rounded-3 card card-body mb-2">
           <div class="d-flex gap-2">
             <div>
-              @if(comment.author._id == post.author._id){
+              @if (comment.author._id == post.author._id) {
                 <b>Autor</b>
               } @else {
                 <a href="/posts?author={{comment.author._id}}">
-                  @if(comment.author._id === user._id){
+                  @if (comment.author._id === user._id) {
                     <b>Eu</b>
                   } @else {
                     <b>{{ comment.author.name }}</b>
@@ -49,7 +58,7 @@
               }
             </div>
             <div>
-              {{ comment.created_at | date: 'dd/MM/yyyy' }}
+              {{ comment.created_at | date: 'dd/MM/yyyy HH:mm' }}
             </div>
           </div>
           <div class="markdown">
