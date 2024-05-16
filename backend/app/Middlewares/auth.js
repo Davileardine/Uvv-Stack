@@ -7,16 +7,16 @@ const auth = async (req, res, next) => {
         const token = req.header('Authorization').replace('Bearer ', '');
         const decoded = jwt.verify(token, secretToken);
 
-        const now = Math.floor(Date.now() / 1000);
-
-        if (decoded.exp <= now) {
-            throw new Error('TokenExpiredError');
-        }
-
         const user = await User.findById(decoded.user._id);
 
         if (!user) {
             throw new Error('JsonWebTokenError');
+        }
+
+        const now = Math.floor(Date.now() / 1000);
+
+        if (decoded.exp <= now) {
+            throw new Error('TokenExpiredError');
         }
 
         req.auth = user;

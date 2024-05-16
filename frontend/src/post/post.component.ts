@@ -31,23 +31,10 @@ export class PostComponent implements OnInit {
     this.user = this.authServices.user();
   }
 
-  // getPosts() {
-  //   this.http.get(this.backendUrl, {headers: this.headers}).subscribe({
-  //     next: (response: any) => {
-  //       this.posts = response.data;
-  //       console.log('posts', this.posts);
-  //     },
-  //     error: (error: any) => {
-  //       console.log('error', error);
-  //     }
-  //   });
-  // }
-
   getPost(id: string) {
     this.http.get(this.backendUrl + '/' + id, {headers: this.headers}).subscribe({
       next: (response: any) => {
         this.post = response.data;
-        console.log('post', this.post);
       },
       error: (error: any) => {
         console.log('error', error);
