@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
+import { AuthServices } from '../../auth/auth.services';
 
 @Component({
   selector: 'app-header',
@@ -14,5 +15,6 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
 
 
 export class HeaderComponent {
-
+  private authService = inject(AuthServices);
+  user = this.authService.user();
 }
