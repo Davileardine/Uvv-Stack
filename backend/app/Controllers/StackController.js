@@ -60,6 +60,31 @@ class StackController {
             res.status(500).send('Erro Interno');
         }
     }
+
+
+    async seachStacks(req, res) {
+        const search = req.query.q;
+        try {
+            const stacks = await Stack.find({name: {$regex: '.*' + search + '.*', $options: 'i'}});
+
+            let arrayStacks = [];
+            for (const stack of stacks) {
+                const posts = await Post.find({stack: stack._id}).countDocuments()
+                arrayStacks.push({
+                    stack,
+                    posts
+                });
+            }
+
+            res.status(200).send({
+                message: 'Stacks encontradas',
+                stacks: arrayStacks
+            });
+        } catch (error) {
+            console.log(error);
+            res.status(500).send('Erro Interno');
+        }
+    }
 }
 
 module.exports = new StackController();
