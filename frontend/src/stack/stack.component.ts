@@ -4,13 +4,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {DatePipe} from "@angular/common";
 import {NewPostComponent} from "../post/new-post.component";
+import {HeaderComponent} from "../app/header/header.component";
 
 @Component({
   selector: 'app-stack',
   standalone: true,
   imports: [
     DatePipe,
-    NewPostComponent
+    NewPostComponent,
+    HeaderComponent
   ],
   templateUrl: './stack.component.html'
 })

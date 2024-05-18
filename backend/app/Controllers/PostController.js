@@ -14,6 +14,7 @@ class PostController {
                 //.populate('tags')
                 .populate({
                     path: 'comments',
+                    options: { sort: { 'created_at': -1 } },
                     select: '_id content author created_at',
                     populate: {
                         path: 'author',
@@ -195,7 +196,6 @@ class PostController {
             res.status(500).send('Erro interno');
         }
     }
-
 }
 
 module.exports = new PostController();

@@ -7,7 +7,6 @@ const secretToken = process.env.APP_SECRET
 const sessionExpires = process.env.SESSION_LIFETIME
 
 class AuthController {
-
     async register(req, res) {
         const user = new User({
             name: req.body.name,
@@ -38,6 +37,9 @@ class AuthController {
 
         try {
             const user = await User.findOne({email});
+            if (!user) {
+                return res.status(400).send('Usuário ou senha inválidos');
+            }
             if (!bcrypt.compareSync(password, user.password)) {
                 return res.status(400).send('Usuário ou senha inválidos');
             }

@@ -1,23 +1,25 @@
-<div class="container-narrow">
-  <div class="row">
-    @for (stack of stacks; track $index) {
-      <div class="col-12 mb-3">
-        <a class="card card-link" href="/stack/{{stack.stack._id}}">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-auto">
-                <span class="avatar rounded">{{ stack.stack.name[0] }}</span>
-              </div>
-              <div class="col">
-                <div class="fw-bolder">{{ stack.stack.name }}</div>
-                <div>
-                  <span class="badge bg-blue-lt">Posts {{ stack.posts }}</span>
-                </div>
+<div class="h2 text-center">
+  Stacks
+</div>
+<div class="row">
+  @for (stack of stacks; track $index) {
+    <div class="col-6 mb-3">
+      <a class="card card-link rounded-5 border border-blue " href="/stack/{{stack.stack._id}}">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto">
+              <span class="avatar rounded">{{ stack.stack.name[0] }}</span>
+            </div>
+            <div class="col">
+              <div class="fw-bolder">{{ stack.stack.name }}</div>
+              <div>
+                <span class="badge bg-blue-lt">Posts {{ stack.posts }}</span>
               </div>
             </div>
           </div>
-        </a>
-      </div>
-    }
-  </div>
+        </div>
+      </a>
+    </div>
+  }
 </div>
+

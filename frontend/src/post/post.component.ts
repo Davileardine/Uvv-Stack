@@ -4,13 +4,15 @@ import {ActivatedRoute} from "@angular/router";
 import {DatePipe} from "@angular/common";
 import {AuthServices} from "../auth/auth.services";
 import {NewCommentComponent} from "../comment/new-comment.component";
+import {HeaderComponent} from "../app/header/header.component";
 
 @Component({
   selector: 'app-post',
   standalone: true,
   imports: [
     DatePipe,
-    NewCommentComponent
+    NewCommentComponent,
+    HeaderComponent
   ],
   templateUrl: './post.component.html'
 })

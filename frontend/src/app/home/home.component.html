@@ -1,20 +1,64 @@
 <app-header/>
-<div class="flex justify-center mt-8 page bg-yellow-lt flex-column align-items-center p-5 gap-5">
-    <h1>Bem vindo a UVV-STACK</h1>
-    <div class="w-50 flex flex-column">
-      <div class="shadow-md d-flex justify-content-center border border-red w-100">
-        <div class="input-icon w-full">
+<div class="flex justify-center page bg-yellow-lt flex-column align-items-center gap-3">
+  <h1>Bem vindo a UVV-STACK</h1>
+  <div class="w-50 flex flex-column">
+    <div class="shadow-md d-flex justify-content-center border w-100">
+      <div class="input-icon w-full">
           <span class="input-icon-addon">
-            
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path
+              stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+              d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
           </span>
-          <input type="text" value="" class="form-control" placeholder="Search…" aria-label="Search in website">
-        </div>
-        <div class="overflow-auto">
-          <!-- TODO: colocar objeto de lista aqui -->
-        </div>
+        <input type="text" [(ngModel)]="seachInput" (ngModelChange)="onModelChange($event)" class="form-control"
+               placeholder="Procurar por Posts" aria-label="Search in website">
+      </div>
     </div>
-      
+    <div class="mt-4 scrollable" style="height: 35rem;">
+      @if (posts.length == 0) {
+        <app-list-stack/>
+      } @else {
+        @for (post of posts; track $index) {
+          <div class="card mb-2">
+            <div class="card-body cursor-pointer hover hover-shadow-lg" (click)="openPost(post._id)">
+              <div class="row">
+                <div class="col-auto">
+                  <span class="avatar rounded-5"
+                        style="background-image: url('https://ui-avatars.com/api/?name={{ post.author.name[0] }}&color=7F9CF5&background=EBF4FF')"></span>
+                </div>
+                <div class="col">
+                  <div class="page-title mb-2">{{ post.title }}</div>
+                  <div class="page-subtitle">
+                    <div class="d-flex gap-4">
+                      <div>
+                        criado em: <b>{{ post.created_at | date: 'dd/MM/yyyy' }}</b>
+                      </div>
+                      @if (post.updated_at) {
+                        <div>
+                          modificado em: <b>{{ post.updated_at | date: 'dd/MM/yyyy' }}</b>
+                        </div>
+                      }
+                      <div>
+                        por: <a href="/posts?author={{post.author._id}}"><b>{{ post.author.name }}</b></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ms-5 my-2 d-flex gap-2">
+              <div>
+                <div class="badge bg-blue-lt">
+                  {{ post.votes }} Uvotes
+                </div>
+              </div>
+              <div>
+                <span class="badge bg-blue-lt">{{ post.comments.length }} comentários</span>
+              </div>
+            </div>
+          </div>
+        }
+      }
     </div>
   </div>
-  
+</div>

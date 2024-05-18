@@ -1,4 +1,5 @@
-<div class="container-narrow  my-2">
+<app-header/>
+<div class="container-narrow mt-2">
   <div class="mb-2 card rounded-5 bg-yellow-lt">
     <div class="card-body">
       <div class="">
@@ -40,16 +41,16 @@
         </div>
       </div>
     }
-    <div class="">
+    <div class="mt-2">
       @for (comment of post.comments; track $index) {
         <div class="rounded-3 card card-body mb-2">
           <div class="d-flex gap-2">
             <div>
               @if (comment.author._id == post.author._id) {
-                <b>Autor</b>
+                 <b>{{ comment.author.name }}</b> (autor)
               } @else {
                 <a href="/posts?author={{comment.author._id}}">
-                  @if (comment.author._id === user._id) {
+                  @if (comment.author._id === user?._id) {
                     <b>Eu</b>
                   } @else {
                     <b>{{ comment.author.name }}</b>
