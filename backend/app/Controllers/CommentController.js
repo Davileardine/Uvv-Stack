@@ -5,7 +5,7 @@ const Post = require('../Models/Post');
 class CommentController {
     // POST /comment
     async postComment(req, res) {
-        const id_post = req.body.id_post;
+        const id_post = req.body.post;
         const com = req.body.content
 
 

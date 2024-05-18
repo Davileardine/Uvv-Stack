@@ -50,6 +50,10 @@ export class NewPostComponent implements OnInit {
       },
       error: (error: any) => {
         console.log(error);
+        if(error.status == 401) {
+          this.authServices.logout();
+          this.router.navigate(['/auth/login']);
+        }
       }
     })
     this.newPostForm.reset();

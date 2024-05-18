@@ -76,6 +76,10 @@ export class StackComponent implements OnInit {
       },
       error: (error: any) => {
         console.log('error', error);
+        if(error.status == 401) {
+          this.authServices.logout();
+          this.router.navigate(['/auth/login']);
+        }
       }
     })
   }
